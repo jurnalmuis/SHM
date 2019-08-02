@@ -1,0 +1,77 @@
+<!--
+    Author : Adhy Nugraha
+    Project Name : SHM (Simple Hotspot MikroTik) v.1
+    Personal Blog : https://hlambuh.wordpress.com or https://jurnalmuis.github.io/
+    Telegram : https://t.me/hmbrgs
+    Icon From : https://www.flaticon.com/authors/flat-icons
+    Framework : Bootstrap 4 https://getbootstrap.com/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Hotspot MikroTik</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/internet.png">
+</head>
+<body class="bg-dark">
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+    
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+    //
+        function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+        document.sendin.submit();
+        return false;
+        }
+    //-->
+    </script>
+    $(endif)
+    <div class="container-fluid">
+        <div class="row justify-content-md-center mt-2">
+            <div class="col-md-4 ">
+                <div class="col-md-auto rounded-top text-white" style="background-color:#347B98;">
+                    <img src="img/internet.png" class="mt-2 mb-2 mr-3" style="width:45px;height:45px;"/>
+                    <strong>Silahkan Login.</strong>
+                </div>
+                <div class="col-md-auto bg-light rounded-bottom ">
+                    <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+                        <div class="form-group ">
+                            <label class="mt-2">Username </label>
+                            <input name="username" type="username" class="form-control form-control-sm" autofocus required>
+                        </div>
+                        <div class="form-group " style="margin-top:-20px;">
+                            <label class="mt-2">Password</label>
+                            <input name="password" type="password" class="form-control form-control-sm" required>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-info w-100">Login</button>
+                    </form>
+                    $(if error)<div class="text-danger mb-1">$(error)</div>$(endif)
+                </div>
+                <div class="text-center py-2 text-white">
+                    <small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank">jurnalmuis.github.io</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    //
+    document.login.username.focus();
+    //-->
+    </script>
+</body>
+</html>

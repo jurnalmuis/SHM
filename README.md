@@ -107,3 +107,9 @@ Menghapus atau mengubah variabel tersebut akan membuat halaman tidak berfungsi d
 ## Lisensi
 
 Bebas dipakai, dimodifikasi, dan disebarluaskan untuk keperluan pembelajaran maupun produksi.
+
+**Ketentuan wajib**:
+
+- **Jangan hapus atau samarkan kredit author** — nama penulis, tautan blog, dan komentar header (mis. `Author : Adhy Nugraha`) di dalam file HTML/CSS **tetap wajib dipertahankan** selama template ini digunakan atau diturunkan.
+- Jika dimodifikasi dan dibagikan ulang, cukup tambahkan nama/kredit Anda di samping kredit asli — jangan menggantinya.
+- Komersialisasi diperbolehkan selama kredit author tetap dicantumkan.

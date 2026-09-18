@@ -7,15 +7,15 @@
     Framework : Bootstrap 4 https://getbootstrap.com/
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 	<meta http-equiv="refresh" content="2; url=status.html">
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="expires" content="-1">
-	<title>Redirect Hotspot</title>
+	<title>Redirect - Simple Hotspot MikroTik</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/internet.png">
 <script language="JavaScript">
@@ -28,24 +28,22 @@
 </script>
 </head>
 <body onLoad="startClock()" class="bg-dark">
-	<div class="container-fluid">
-		<div class="row justify-content-md-center mt-5">
-			<div class="col-md-4 ">
-				<div class="col-md-auto rounded-top text-white " style="background-color:#347B98;">
-					<img src="img/internet.png" class="mt-2 mb-2 mr-3" style="width:45px;height:45px;"/>
-					<strong>Silahkan Tunggu.</strong>
-				</div>
-				<div class="col-md-auto bg-light rounded-bottom ">
-					<p class="py-5">
-						Login Hotspot Berhasil. 
-						<strong>Silahkan Tunggu...</strong>
-					</p>
-				</div>
-				<div class="text-center py-2 text-white">
-					<small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank">jurnalmuis.github.io</a></small>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="auth-wrap">
+        <div class="auth-card">
+            <header class="auth-header rounded-top d-flex align-items-center text-white">
+                <img src="img/internet.png" class="hotspot-logo mr-3" alt="Ikon Hotspot MikroTik">
+                <strong>Silahkan Tunggu.</strong>
+            </header>
+            <main class="auth-body bg-light rounded-bottom text-center">
+                <p class="py-4 mb-0">
+                    Login Hotspot Berhasil.<br class="d-sm-none">
+                    <strong>Silahkan Tunggu...</strong>
+                </p>
+            </main>
+            <footer class="auth-footer text-center text-white">
+                <small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank" class="font-weight-bold">jurnalmuis.github.io</a></small>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

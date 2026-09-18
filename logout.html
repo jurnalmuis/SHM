@@ -7,14 +7,14 @@
     Framework : Bootstrap 4 https://getbootstrap.com/
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="expires" content="-1">
-	<title>Logout Hotspot</title>
+	<title>Logout - Simple Hotspot MikroTik</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/internet.png">
 </head>
@@ -29,67 +29,51 @@
     }
 //-->
 </script>
-<div class="container-fluid">
-		<div class="row justify-content-md-center mt-5">
-			<div class="col-md-4 ">
-				<div class="col-md-auto rounded-top text-white " style="background-color:#347B98;">
-					<img src="img/internet.png" class="mt-2 mb-2 mr-3" style="width:45px;height:45px;"/>
-					<strong>Logout Hotspot.</strong>
-				</div>
+<div class="auth-wrap">
+        <div class="auth-card">
+            <header class="auth-header rounded-top d-flex align-items-center text-white">
+                <img src="img/internet.png" class="hotspot-logo mr-3" alt="Ikon Hotspot MikroTik">
+                <strong>Logout Hotspot.</strong>
+            </header>
 
-				<form action="$(link-login)" name="login" onSubmit="return openLogin()">
-					<div class="col-md-auto bg-light rounded-bottom ">
-						<div class="row justify-content-md-center">
-							<div class="col-12" style="text-align: center;">
-								<strong>Anda Sudah Keluar Dari Hotspot</strong>
-							</div>
-							<div class="col-4">
-								user name:
-							</div>
-							<div class="col-8">
-								$(username)
-							</div>
-							<div class="col-4">
-								IP address:
-							</div>
-							<div class="col-8">
-								$(ip)
-							</div>
-							<div class="col-4">
-								MAC address:
-							</div>
-							<div class="col-8">	
-								$(mac)
-							</div>
-							<div class="col-4">
-								session time:
-							</div>
-							<div class="col-8">
-								$(uptime)
-							</div>
-							$(if session-time-left)
-							<div class="col-4">
-								time left:
-							</div>
-							<div class="col-8">
-								$(session-time-left)
-							</div>
-							$(endif)
-							<div class="col-4">
-								bytes up/down:
-							</div>
-							<div class="col-8">
-								$(bytes-in-nice) / $(bytes-out-nice)
-							</div>
-							<div class="col-12 mb-3 mt-2"><input type="submit" value="Login Hotspot" class="btn btn-sm btn-primary w-100"></div>
-						</div>
-					</div>
-				</form>
-				<div class="text-center py-2 text-white">
-					<small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank">jurnalmuis.github.io</a></small>
-				</div>
-			</div>
-		</div>
-	</div>
+            <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                <main class="auth-body bg-light rounded-bottom">
+                    <div class="text-center font-weight-bold mb-3">Anda Sudah Keluar Dari Hotspot</div>
+                    <dl class="mb-3">
+                        <div class="auth-meta">
+                            <dt class="k">user name:</dt>
+                            <dd class="v mb-0">$(username)</dd>
+                        </div>
+                        <div class="auth-meta">
+                            <dt class="k">IP address:</dt>
+                            <dd class="v mb-0">$(ip)</dd>
+                        </div>
+                        <div class="auth-meta">
+                            <dt class="k">MAC address:</dt>
+                            <dd class="v mb-0">$(mac)</dd>
+                        </div>
+                        <div class="auth-meta">
+                            <dt class="k">session time:</dt>
+                            <dd class="v mb-0">$(uptime)</dd>
+                        </div>
+                        $(if session-time-left)
+                        <div class="auth-meta">
+                            <dt class="k">time left:</dt>
+                            <dd class="v mb-0">$(session-time-left)</dd>
+                        </div>
+                        $(endif)
+                        <div class="auth-meta">
+                            <dt class="k">bytes up/down:</dt>
+                            <dd class="v mb-0">$(bytes-in-nice) / $(bytes-out-nice)</dd>
+                        </div>
+                    </dl>
+                    <input type="submit" value="Login Hotspot" class="btn btn-primary btn-auth w-100">
+                </main>
+            </form>
+            <footer class="auth-footer text-center text-white">
+                <small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank" class="font-weight-bold">jurnalmuis.github.io</a></small>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

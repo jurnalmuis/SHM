@@ -7,17 +7,17 @@
     Framework : Bootstrap 4 https://getbootstrap.com/
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 	$(if refresh-timeout)
 	<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
 	$(endif)
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="expires" content="-1">
-	<title>Status Hotspot</title>
+	<title>Status - Simple Hotspot MikroTik</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/internet.png">
 <script language="JavaScript">
@@ -46,78 +46,61 @@ $(if advert-pending == 'yes')
 	onLoad="openAdvert()"
 $(endif)
 >
-	<div class="container-fluid">
-		<div class="row justify-content-md-center mt-5">
-			<div class="col-md-4 ">
-				<div class="col-md-auto rounded-top text-white " style="background-color:#347B98;">
-					<img src="img/internet.png" class="mt-2 mb-2 mr-3" style="width:45px;height:45px;"/>
-					<strong>Status Hotspot.</strong>
-				</div>
-				<div class="col-md-auto bg-light rounded-bottom ">
-					$(if login-by == 'trial')
-						<div style="text-align: center;">Selamat Datang <strong>trial user!</strong></div>
-					$(elif login-by != 'mac')
-						<div style="text-align: center;">Selamat Datang <strong>$(username)!</strong></div>
-					$(endif)
-					<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
-						<div class="row justify-content-md-center">
-							<!--Ip Address -->
-							<div class="col-4">
-								IP address:
-							</div>
-							<div class="col-8">
-								$(ip)
-							</div>
-							<!-- Bytes -->
-							<div class="col-4">
-								bytes up/down:
-							</div>
-							<div class="col-8">
-								$(bytes-in-nice) / $(bytes-out-nice)
-							</div>
-							<!-- Connected -->
-							$(if session-time-left)
-							<div class="col-4">
-								connected / left:
-							</div>
-							<div class="col-8">
-								$(uptime) / $(session-time-left)	
-							</div>
-							$(else)
-							<div class="col-4">
-								connected:
-							</div>
-							<div class="col-8">
-								$(uptime)
-							</div>
-							$(endif)
-							$(if blocked == 'yes')
-							<div class="col-4">
-								status:
-							</div>
-							<div class="col-8">
-								<a href="$(link-advert)" target="hotspot_advert">advertisement</a> required
-							</div>
-							$(elif refresh-timeout)
-							<div class="col-4">
-								status refresh:
-							</div>
-							<div class="col-8">
-								$(refresh-timeout)
-							</div>
-							$(endif)
-							<div class="col-12 mb-4 mt-2"><a href="https://jurnalmuis.github.io/" class="btn btn-sm btn-success w-100">Lanjutkan Browsing</a></div>
-							$(if login-by-mac != 'yes')
-							<div class="col-12 mb-3"><input type="submit" value="Keluar Hotspot" class="btn btn-sm btn-danger w-100"></div>
-							$(endif)
-						</div>
-					</form>
-				</div>
-				<div class="text-center py-2 text-white">
-					<small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank">jurnalmuis.github.io</a></small>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="auth-wrap">
+        <div class="auth-card">
+            <header class="auth-header rounded-top d-flex align-items-center text-white">
+                <img src="img/internet.png" class="hotspot-logo mr-3" alt="Ikon Hotspot MikroTik">
+                <strong>Status Hotspot.</strong>
+            </header>
+            <main class="auth-body bg-light rounded-bottom">
+                $(if login-by == 'trial')
+                    <div class="text-center font-weight-bold mb-3">Selamat Datang <strong>trial user!</strong></div>
+                $(elif login-by != 'mac')
+                    <div class="text-center font-weight-bold mb-3">Selamat Datang <strong>$(username)!</strong></div>
+                $(endif)
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <dl class="mb-3">
+                        <div class="auth-meta">
+                            <dt class="k">IP address:</dt>
+                            <dd class="v mb-0">$(ip)</dd>
+                        </div>
+                        <div class="auth-meta">
+                            <dt class="k">bytes up/down:</dt>
+                            <dd class="v mb-0">$(bytes-in-nice) / $(bytes-out-nice)</dd>
+                        </div>
+                        $(if session-time-left)
+                        <div class="auth-meta">
+                            <dt class="k">connected / left:</dt>
+                            <dd class="v mb-0">$(uptime) / $(session-time-left)</dd>
+                        </div>
+                        $(else)
+                        <div class="auth-meta">
+                            <dt class="k">connected:</dt>
+                            <dd class="v mb-0">$(uptime)</dd>
+                        </div>
+                        $(endif)
+                        $(if blocked == 'yes')
+                        <div class="auth-meta">
+                            <dt class="k">status:</dt>
+                            <dd class="v mb-0"><a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</dd>
+                        </div>
+                        $(elif refresh-timeout)
+                        <div class="auth-meta">
+                            <dt class="k">status refresh:</dt>
+                            <dd class="v mb-0">$(refresh-timeout)</dd>
+                        </div>
+                        $(endif)
+                    </dl>
+                    <a href="https://jurnalmuis.github.io/" class="btn btn-success btn-auth w-100">Lanjutkan Browsing</a>
+                    $(if login-by-mac != 'yes')
+                    <input type="submit" value="Keluar Hotspot" class="btn btn-danger btn-auth w-100">
+                    $(endif)
+                </form>
+            </main>
+            <footer class="auth-footer text-center text-white">
+                <small>&copy; 2019 <a href="https://jurnalmuis.github.io/" target="_blank" class="font-weight-bold">jurnalmuis.github.io</a></small>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
